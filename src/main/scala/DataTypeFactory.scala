@@ -5,5 +5,4 @@ object DataTypeFactory {
     val types = ArrayBuffer[String]("MyInteger", "MyDate", "Test");
 
 
-
 }

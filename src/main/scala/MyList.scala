@@ -15,7 +15,7 @@ class MyList[T <: IDataType] extends Iterable[T] with Serializable {
         mySize = 1
     }
 
-     def getSize: Int = mySize
+    def getSize: Int = mySize
 
     override def isEmpty: Boolean = mySize <= 0
 
@@ -140,4 +140,3 @@ class MyList[T <: IDataType] extends Iterable[T] with Serializable {
         }
     }
 }
-

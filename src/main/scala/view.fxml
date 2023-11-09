@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<Pane fx:id="parentPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+      prefHeight="300.0" prefWidth="550.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="Controller">
+    <children>
+        <Pane fx:id="chooseTypePane" prefHeight="300.0" prefWidth="300.0" visible="false">
+            <children>
+                <Label alignment="CENTER" layoutY="9.0" prefHeight="22.0" prefWidth="300.0" text="Выберите тип данных:"
+                       textAlignment="CENTER">
+                    <font>
+                        <Font size="16.0"/>
+                    </font>
+                </Label>
+                <ComboBox fx:id="chooseDatatypeCombobox" layoutX="64.0" layoutY="47.0"
+                          onAction="#choiceDatatypeComboboxClick" prefHeight="25.0" prefWidth="173.0"/>
+                <Button fx:id="chooseTypeButton" disable="true" layoutX="112.0" layoutY="236.0" mnemonicParsing="false"
+                        onAction="#chooseTypeButtonClick" prefHeight="25.0" prefWidth="77.0" text="Далее"/>
+            </children>
+        </Pane>
+        <Pane fx:id="addDataPane" prefHeight="300.0" prefWidth="300.0" visible="false">
+            <children>
+                <VBox fx:id="addIntVbox" layoutX="92.0" layoutY="34.0" prefHeight="58.0" prefWidth="118.0"
+                      visible="false">
+                    <children>
+                        <Label alignment="CENTER" prefHeight="20.0" prefWidth="122.0" text="Введите число:"
+                               textAlignment="CENTER">
+                            <font>
+                                <Font size="14.0"/>
+                            </font>
+                        </Label>
+                        <TextField fx:id="enterIntTextfield" prefHeight="25.0" prefWidth="106.0">
+                            <font>
+                                <Font size="14.0"/>
+                            </font>
+                        </TextField>
+                    </children>
+                </VBox>
+                <VBox fx:id="addUniVbox" layoutX="89.0" layoutY="34.0" prefHeight="58.0" prefWidth="118.0"
+                      visible="false">
+                    <children>
+                        <Label alignment="CENTER" prefHeight="20.0" prefWidth="122.0" text="Введите данные:"
+                               textAlignment="CENTER">
+                            <font>
+                                <Font size="14.0"/>
+                            </font>
+                        </Label>
+                        <TextField fx:id="enterUniTextfield" prefHeight="25.0" prefWidth="106.0">
+                            <font>
+                                <Font size="14.0"/>
+                            </font>
+                        </TextField>
+                    </children>
+                </VBox>
+                <VBox fx:id="addDateVbox" layoutX="64.0" layoutY="26.0" prefHeight="52.0" prefWidth="173.0"
+                      visible="false">
+                    <children>
+                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="18.0" prefWidth="198.0"
+                               text="Выберите дату:" textAlignment="CENTER">
+                            <font>
+                                <Font size="14.0"/>
+                            </font>
+                        </Label>
+                        <DatePicker fx:id="datePicker" editable="false"/>
+                    </children>
+                </VBox>
+                <Label layoutX="79.0" layoutY="96.0" text="В какую часть списка?">
+                    <font>
+                        <Font size="14.0"/>
+                    </font>
+                </Label>
+                <VBox layoutX="77.0" layoutY="128.0" prefHeight="113.0" prefWidth="141.0">
+                    <children>
+                        <Button fx:id="addDataToEndButton" mnemonicParsing="false" onAction="#addDataToEndButtonClick"
+                                prefHeight="30.0" prefWidth="144.0" text="В конец"/>
+                        <Separator prefWidth="200.0"/>
+                        <Button fx:id="addDataToBeginButton" mnemonicParsing="false"
+                                onAction="#addDataToBeginButtonClick" prefHeight="30.0" prefWidth="141.0"
+                                text="В начало"/>
+                        <Separator prefWidth="200.0"/>
+                        <HBox prefHeight="30.0" prefWidth="118.0">
+                            <children>
+                                <Button fx:id="addDataToIndexButton" mnemonicParsing="false"
+                                        onAction="#addDataToIndexButtonClick" prefHeight="30.0" prefWidth="105.0"
+                                        text="По индексу:"/>
+                                <TextField fx:id="addDataToIndexTextfield" prefHeight="30.0" prefWidth="36.0"/>
+                            </children>
+                        </HBox>
+                    </children>
+                </VBox>
+                <Label alignment="CENTER" contentDisplay="CENTER" layoutX="1.0" layoutY="4.0" prefHeight="20.0"
+                       prefWidth="300.0" text="Добавление объекта" textAlignment="CENTER">
+                    <font>
+                        <Font size="16.0"/>
+                    </font>
+                </Label>
+                <Button fx:id="backToMenuButton" layoutX="109.0" layoutY="244.0" mnemonicParsing="false"
+                        onAction="#backToMenuButtonClick" prefHeight="30.0" prefWidth="77.0" text="Назад"/>
+            </children>
+        </Pane>
+        <Pane fx:id="menuPane" prefHeight="300.0" prefWidth="550.0" visible="false">
+            <children>
+                <Label alignment="CENTER" layoutY="14.0" prefHeight="25.0" prefWidth="215.0" text="Выберите действие"
+                       textAlignment="CENTER">
+                    <font>
+                        <Font size="16.0"/>
+                    </font>
+                </Label>
+                <VBox layoutX="26.0" layoutY="45.0" prefHeight="210.0" prefWidth="160.0">
+                    <children>
+                        <Button fx:id="addObjectButton" mnemonicParsing="false" onAction="#addObjectButtonClick"
+                                prefHeight="30.0" prefWidth="160.0" text="Добавить объект"/>
+                        <Separator prefWidth="200.0"/>
+                        <HBox prefHeight="29.0" prefWidth="160.0">
+                            <children>
+                                <Button fx:id="getObjectButton" mnemonicParsing="false" onAction="#getObjectButtonClick"
+                                        prefHeight="30.0" prefWidth="123.0" text="Получить:"/>
+                                <TextField fx:id="getObjectTextfield" alignment="CENTER" prefHeight="30.0"
+                                           prefWidth="42.0" text="1">
+                                    <font>
+                                        <Font size="13.0"/>
+                                    </font>
+                                </TextField>
+                            </children>
+                        </HBox>
+                        <Separator prefWidth="200.0"/>
+                        <HBox prefHeight="29.0" prefWidth="160.0">
+                            <children>
+                                <Button fx:id="delObjectButton" mnemonicParsing="false" onAction="#delObjectButtonClick"
+                                        prefHeight="30.0" prefWidth="124.0" text="Удалить:"/>
+                                <TextField fx:id="delObjectTextfield" alignment="CENTER" prefHeight="30.0"
+                                           prefWidth="42.0" text="1">
+                                    <font>
+                                        <Font size="13.0"/>
+                                    </font>
+                                </TextField>
+                            </children>
+                        </HBox>
+                        <Separator prefWidth="200.0"/>
+                        <Button fx:id="sortButton" mnemonicParsing="false" onAction="#sortButtonClick" prefHeight="30.0"
+                                prefWidth="160.0" text="Сортировать список"/>
+                        <Separator prefWidth="200.0"/>
+                        <Button fx:id="saveButton" mnemonicParsing="false" onAction="#saveButtonClick" prefHeight="30.0"
+                                prefWidth="160.0" text="Сохранить в файл"/>
+                        <Separator prefWidth="200.0"/>
+                        <Button fx:id="loadButton" mnemonicParsing="false" onAction="#loadButtonClick" prefHeight="30.0"
+                                prefWidth="160.0" text="Загрузить из файла"/>
+                    </children>
+                </VBox>
+                <Separator layoutX="214.0" orientation="VERTICAL" prefHeight="300.0" prefWidth="0.0"/>
+                <Label alignment="CENTER" layoutX="347.0" layoutY="14.0" prefHeight="25.0" prefWidth="69.0"
+                       text="Список" textAlignment="CENTER">
+                    <font>
+                        <Font size="16.0"/>
+                    </font>
+                </Label>
+                <ListView fx:id="listView" layoutX="220.0" layoutY="39.0" prefHeight="257.0" prefWidth="324.0"/>
+            </children>
+        </Pane>
+    </children>
+</Pane>
