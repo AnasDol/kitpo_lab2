@@ -16,3 +16,4 @@ class DataTypeFactory {
                 throw new RuntimeException(s"Class $className not found in dataTypes")
         }
     }
+}
