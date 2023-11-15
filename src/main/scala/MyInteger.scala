@@ -1,6 +1,16 @@
 import java.util.Scanner
 
-class MyInteger(private var integer: Integer = 0) extends IDataType {
+class MyInteger extends IDataType {
+
+    private var integer: Integer = 0
+
+    def this(integer: Integer) {
+
+        this()
+        this.integer = integer
+
+    }
+
 
     def getTypeName: String = this.getClass.getSimpleName
 
