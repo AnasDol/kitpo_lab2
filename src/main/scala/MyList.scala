@@ -1,5 +1,3 @@
-import java.io.Serializable
-
 class MyList[T <: IDataType] extends Iterable[T] with Serializable {
 
     private var myHead: Node[T] = _
@@ -13,7 +11,7 @@ class MyList[T <: IDataType] extends Iterable[T] with Serializable {
         mySize = 1
     }
 
-     def getSize: Int = mySize
+    def getSize: Int = mySize
 
     override def isEmpty: Boolean = mySize <= 0
 
@@ -112,25 +110,25 @@ class MyList[T <: IDataType] extends Iterable[T] with Serializable {
         }
     }
 
-//    def sort(comparator: MyComparator): MyList[T] = {
-//        def insertSorted(list: MyList[T], value: T): MyList[T] = {
-//            if (list.isEmpty) list.pushEnd(value)
-//            else if (comparator.compare(value, list.myTail.value) >= 0) list.pushEnd(value)
-//            else if (comparator.compare(value, list.myHead.value) <= 0) list.pushBegin(value)
-//            else {
-//                def insertAtPosition(cur: Node[T], k: Int): MyList[T] = {
-//                    if (k == 0) list.insert(value, k)
-//                    else insertAtPosition(cur.next, k - 1)
-//                }
-//
-//                insertAtPosition(list.head, 1)
-//            }
-//        }
-//
-//        foldLeft(MyList.this) { (acc, value) =>
-//            insertSorted(acc, value)
-//        }
-//    }
+    //    def sort(comparator: MyComparator): MyList[T] = {
+    //        def insertSorted(list: MyList[T], value: T): MyList[T] = {
+    //            if (list.isEmpty) list.pushEnd(value)
+    //            else if (comparator.compare(value, list.myTail.value) >= 0) list.pushEnd(value)
+    //            else if (comparator.compare(value, list.myHead.value) <= 0) list.pushBegin(value)
+    //            else {
+    //                def insertAtPosition(cur: Node[T], k: Int): MyList[T] = {
+    //                    if (k == 0) list.insert(value, k)
+    //                    else insertAtPosition(cur.next, k - 1)
+    //                }
+    //
+    //                insertAtPosition(list.head, 1)
+    //            }
+    //        }
+    //
+    //        foldLeft(MyList.this) { (acc, value) =>
+    //            insertSorted(acc, value)
+    //        }
+    //    }
 
     def iterator: Iterator[T] = new MyListIterator
 
@@ -140,7 +138,7 @@ class MyList[T <: IDataType] extends Iterable[T] with Serializable {
         }
     }
 
-    private class MyListIterator(private var curr: Node[T] = myHead) extends Iterator[T] {
+    private class MyListIterator(private var curr: Node[T] = myHead) extends Iterator[T] with Serializable {
 
         def hasNext: Boolean = curr != null
 
@@ -156,4 +154,3 @@ class MyList[T <: IDataType] extends Iterable[T] with Serializable {
         }
     }
 }
-

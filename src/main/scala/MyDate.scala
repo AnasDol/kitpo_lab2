@@ -57,5 +57,4 @@ class MyDate extends IDataType {
     }
 
 
-
 }

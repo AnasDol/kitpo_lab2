@@ -5,12 +5,9 @@ class MyInteger extends IDataType {
     private var integer: Integer = 0
 
     def this(integer: Integer) {
-
         this()
         this.integer = integer
-
     }
-
 
     def getTypeName: String = this.getClass.getSimpleName
 

@@ -8,6 +8,4 @@ trait IDataType extends Serializable {
     def parseValue(ss: String): IDataType
 
     def getTypeComparator: MyComparator
-
-    //def toString: String
 }
