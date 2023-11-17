@@ -4,11 +4,10 @@ import javafx.scene.control._
 import javafx.scene.layout.{Pane, VBox}
 import javafx.stage.{FileChooser, Stage}
 
-import scala.collection.JavaConverters._
 import java.io._
 import java.time.format.DateTimeFormatter
 import java.util
-import java.util.ArrayList
+import scala.collection.JavaConverters._
 import scala.collection.mutable.ArrayBuffer
 
 class Controller {
@@ -156,6 +155,7 @@ class Controller {
 
     @FXML def sortButtonClick(): Unit = {
         //    list = list.sort(proto.getTypeComparator)
+        list = list.quickSort(proto.getTypeComparator)
         updateList()
     }
 
@@ -262,6 +262,8 @@ class Controller {
     private def chooseSaveFile(): String = {
         val fileChooser: FileChooser = new FileChooser
         fileChooser.setTitle("Создайте файл для сохранения")
+        val extFilter = new FileChooser.ExtensionFilter("List data extensions", "*." + proto.getTypeName)
+        fileChooser.getExtensionFilters.add(extFilter)
         val selectedFile: File = fileChooser.showSaveDialog(new Stage)
         if (selectedFile != null) {
             selectedFile.getAbsolutePath
@@ -273,6 +275,8 @@ class Controller {
     private def chooseLoadFile(): String = {
         val fileChooser: FileChooser = new FileChooser
         fileChooser.setTitle("Выберите файл для загрузки")
+        val extFilter = new FileChooser.ExtensionFilter("List data extensions", "*." + proto.getTypeName)
+        fileChooser.getExtensionFilters.add(extFilter)
         val selectedFile: File = fileChooser.showOpenDialog(new Stage)
         if (selectedFile != null) {
             selectedFile.getAbsolutePath
