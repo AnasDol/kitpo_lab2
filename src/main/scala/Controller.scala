@@ -155,7 +155,7 @@ class Controller {
 
     @FXML def sortButtonClick(): Unit = {
         //    list = list.sort(proto.getTypeComparator)
-        list = list.quickSort(proto.getTypeComparator)
+        list = list.mergeSort(proto.getTypeComparator)
         updateList()
     }
 

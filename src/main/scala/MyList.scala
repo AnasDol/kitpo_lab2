@@ -14,6 +14,7 @@ class MyList[T <: IDataType] extends Iterable[T] with Serializable {
     def getSize: Int = mySize
 
     override def isEmpty: Boolean = mySize <= 0
+    override def nonEmpty: Boolean = mySize > 0
 
     def pushEnd(value: T): MyList[T] = {
         if (isEmpty) {
@@ -78,36 +79,9 @@ class MyList[T <: IDataType] extends Iterable[T] with Serializable {
         else None
     }
 
-//    def remove(number: Int): Boolean = {
-//        val index = number - 1
-//        if (index < 0 || index >= mySize) return false
-//        if (index == 0 && (mySize == 1)) {
-//            myHead = null
-//            myTail = null
-//        }
-//        else if (index == 0) {
-//            myHead = myHead.next
-//            myHead.prev = null
-//        }
-//        else if (index == mySize - 1) {
-//            myTail = myTail.prev
-//            myTail.next = null
-//        }
-//        else {
-//            var cur = myHead
-//            for (i <- 0 until index - 1) {
-//                cur = cur.next
-//            }
-//            cur.next = cur.next.next
-//            cur.next.prev = cur
-//        }
-//        mySize -= 1
-//        true
-//    }
-
-    def remove(number: Int): MyList[T] = {
+    def remove(number: Int): Boolean = {
         val index = number - 1
-        if (index < 0 || index >= mySize) return this
+        if (index < 0 || index >= mySize) return false
         if (index == 0 && (mySize == 1)) {
             myHead = null
             myTail = null
@@ -129,7 +103,7 @@ class MyList[T <: IDataType] extends Iterable[T] with Serializable {
             cur.next.prev = cur
         }
         mySize -= 1
-        this
+        true
     }
 
     // ДРОПНУТЬ!!!
@@ -160,17 +134,15 @@ class MyList[T <: IDataType] extends Iterable[T] with Serializable {
         if (n == 0) list
         else {
             def merge(xs: MyList[T], ys: MyList[T]): MyList[T] = {
-                if (xs.isEmpty) return ys
-                else if (ys.isEmpty) return xs
+                if (xs.isEmpty && ys.nonEmpty) ys
+                else if (ys.isEmpty && xs.nonEmpty) xs
                 else {
-                    val x = xs.getValue(1).get
-                    val y = ys.getValue(1).get
-                    val xs1 = xs.remove(1)
-                    val ys1 = ys.remove(1)
-                    if (comparator.compare(x, y) < 0) {
-                        return merge(xs1, ys).pushEnd(x)
+                    val (x, xs1) = xs.split(1)
+                    val (y, ys1) = ys.split(1)
+                    if (comparator.compare(x.getValue(1).get, y.getValue(1).get) < 0) {
+                        merge(xs1, ys).pushBegin(x.getValue(1).get)
                     } else {
-                        return merge(xs, ys1).pushEnd(y)
+                        merge(xs, ys1).pushBegin(y.getValue(1).get)
                     }
                 }
             }
